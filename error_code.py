@@ -1,13 +1,14 @@
 # This file has errors that need to be fixed
 # Use what you know about Python to fix them
 
+from os import name
 import random
-from error_code_function import combat, createMonster  
+from error_code_functions import combat, create_monster # #
 
 char_name = input("Please enter a character name:\n")
 char_class = 0
-items = ["sword","shield","potion","spyglass","wand","dagger","spellbook","coinpurse"]
-items = [] 
+items = ["sword","shield","potion","spyglass","wand","dagger","spellbook","coinpurse"]#
+
 class_stats = {
     "Fighter":{
         "health":100,
@@ -87,7 +88,7 @@ while True:
                 print("\nThe fight drags on... neither side can land a clean hit.")
                 print("You break away and retreat before this becomes your whole personality.")
         elif monster["health"] > 0:
-            print(f"You were slain by the {monster["name"]}!") 
+            print("You were slain by the {monster[name]}!") 
             print("Your vision fades. The dungeon claims another hero.")
             break
         else:
@@ -97,14 +98,14 @@ while True:
                 )
             print(f"You were victorious! You gain {gold} gold!")
         
-            char_class = char_class["gold"] + gold
+            char_class = class_stats["gold"] + gold
 
             print(f"TOTAL GOLD: {char_class['gold']}") 
 
-    elif choice == "Search" or choice == "2":
+    elif choice == "Search" or choice == "2": 
         did_find = random.randint(1,100)
-
-        if did_find < char_class["Luck"]:
+                                     
+        if did_find < char_class["luck"]:
             found_item = random.choice(items) 
             char_class["inventory"].append(found_item)
             print(f"You search the area... and find a {found_item}!")
@@ -122,5 +123,5 @@ while True:
 
     FIRST_PASS == False
 
-print(f"Final Stats -> HP: {char_class['health']} | GOLD: {char_class['gold']} | INVENTORY: {char_class['inventory']}")
+print("Final Stats -> HP: {char_class['health']} | GOLD: {char_class['gold']} | INVENTORY: {char_class['inventory']}")
 print("Goodbye!")
